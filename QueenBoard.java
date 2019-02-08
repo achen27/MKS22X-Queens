@@ -125,16 +125,19 @@ public class QueenBoard{
     System.out.println(debugString());
     System.out.print("("+r+", "+c+")");
     System.out.println();
-    for (int i = 0; i < board.length; i++){
+    for (int i = 0; r+i < board.length; i++){
       if (board[r+i][c] == 0) {
         addQueen(r,c);
         queenR = r;
         queenC = c;
+        System.out.println("EmptySpot");
         return solveHelp(0,c+1, queenR, queenC);
       }
+      System.out.println("NotEmptySpot");
       return solveHelp(r+1, c, queenR, queenC);
     }
     removeQueen(queenR, queenC);
+    System.out.println("GoBack");
     return solveHelp(r+1,c-1, queenR, queenC);
   }
 
