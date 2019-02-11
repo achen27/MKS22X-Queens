@@ -143,37 +143,11 @@ public class QueenBoard{
         }
       }
     }
-    ArrayList<Integer> queens = new ArrayList<>();
-    return countHelp(0,0,0,queens);
+    return countHelp(0);
   }
 
-  private int countHelp(int r, int c, int count, ArrayList<Integer> queens){
-    if (c >= board.length){
-      count++;
-      int last = queens.get(queens.size()-1);
-      removeQueen(last,c-1);
-      queens.remove(queens.size()-1);
-      return countHelp(last+1,c-1,count,queens);
-    }
-    if (c == 0 && r >= board.length){
-      return count;
-    }
-    if (addQueen(r,c)){
-      for (int i = 0; i < board.length; i++){
-        return countHelp(i,c+1,count,queens);
-      }
-      int last = queens.get(queens.size()-1);
-      removeQueen(last,c-1);
-      queens.remove(queens.size()-1);
-      return countHelp(last+1,c,count,queens);
-    } else if (r >= board.length){
-      int last = queens.get(queens.size()-1);
-      removeQueen(last,c-1);
-      queens.remove(queens.size()-1);
-      return countHelp(last+1,c-1,count,queens);
-    } else {
-      return countHelp(r+1,c,count,queens);
-    }
+  private int countHelp(int c){
+    
   }
 
   public static void main(String[] args){
