@@ -129,7 +129,7 @@ public class QueenBoard{
       addQueen(r,c);
       System.out.println("EmptySpot");
       for (int i = r; i < board.length; i++){
-        return solveHelp(0,c+1);
+        return solveHelp(i,c+1);
       }
     } else if (r >= board.length){
       System.out.println("GoingBack");
