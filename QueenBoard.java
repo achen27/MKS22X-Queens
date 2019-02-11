@@ -115,7 +115,7 @@ public class QueenBoard{
 
   }
 
-  private void solveHelp(int r, int c){
+  private boolean solveHelp(int r, int c){
     if (c >= board.length){
       return true;
     }
@@ -126,7 +126,7 @@ public class QueenBoard{
     System.out.print("("+r+", "+c+")");
     System.out.println();
     if (board[r][c] == 0){
-      addQueen(i,c);
+      addQueen(r,c);
       System.out.println("EmptySpot");
       for (int i = r; i < board.length; i++){
         return solveHelp(0,c+1);
