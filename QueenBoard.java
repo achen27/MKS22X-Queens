@@ -124,29 +124,29 @@ public class QueenBoard{
     if (c == 0 && r >= board.length){
       return false;
     }
-    System.out.println(debugString());
-    System.out.print("("+r+", "+c+")");
-    System.out.println();
+    //System.out.println(debugString());
+    //System.out.print("("+r+", "+c+")");
+    //System.out.println();
     if (addQueen(r,c)){
       queens.add(r);
-      System.out.println("EmptySpot");
+      //System.out.println("EmptySpot");
       for (int i = 0; i < board.length; i++){
-        System.out.println("GoingDown1");
+        //System.out.println("GoingDown1");
         return solveHelp(i,c+1,queens);
       }
       int last = queens.get(queens.size()-1);
       removeQueen(last,c-1);
       queens.remove(queens.size()-1);
-      System.out.println("GoingBack1");
+      //System.out.println("GoingBack1");
       return solveHelp(last+1,c,queens);
     } else if (r >= board.length){
       int last = queens.get(queens.size()-1);
       removeQueen(last,c-1);
       queens.remove(queens.size()-1);
-      System.out.println("GoingBack2");
+      //System.out.println("GoingBack2");
       return solveHelp(last+1,c-1,queens);
     } else {
-      System.out.println("GoingDown2");
+      //System.out.println("GoingDown2");
       return solveHelp(r+1,c,queens);
     }
     /*System.out.println(debugString());
