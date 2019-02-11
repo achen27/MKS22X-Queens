@@ -119,10 +119,20 @@ public class QueenBoard{
     if (c >= board.length){
       return true;
     }
-    if (c == 0 && r >= board.length){
+    if (r >= board.length){
       return false;
     }
-    System.out.println(debugString());
+    if (board[r][c] == 0){
+      addQueen(r,c);
+      for (int i = 0; i < board.length; i++){
+        return solveHelp(i,c+1);
+      }
+      removeQueen(r,c);
+      return solveHelp(r+1,c);
+    } else {
+      return solveHelp(r+1,c);
+    }
+    /*System.out.println(debugString());
     System.out.print("("+r+", "+c+")");
     System.out.println();
     if (board[r][c] == 0){
@@ -138,7 +148,7 @@ public class QueenBoard{
     } else {
       System.out.println("GoingDown");
       return solveHelp(0,c+1);
-    }
+    }*/
     /*for (int i = r; i < board.length; i++){
       if (board[i][c] == 0){
         addQueen(i,c);
