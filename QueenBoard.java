@@ -149,13 +149,14 @@ public class QueenBoard{
   private int countHelp(int c, int count){
     if (c >= board.length){ //col is past end of board
       count++; //queen placed in every col--solution found
+      return count;
     }
     for (int r = 0; r < board.length; r++){ //looping through each row
       System.out.println(debugString());
       System.out.println("("+r+", "+c+")");
       System.out.println("Count: "+count);
       if (addQueen(r,c)){ //puts a queen down
-        count += countHelp(c+1,count);
+        count = countHelp(c+1,count);
         removeQueen(r,c); //removes queen after placing it
       }
     }
