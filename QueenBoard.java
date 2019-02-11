@@ -1,4 +1,5 @@
 //PREVIOUS COMMITS IN MKS22X-RECUSION
+import java.util.ArrayList;
 
 public class QueenBoard{
 
@@ -111,26 +112,31 @@ public class QueenBoard{
         }
       }
     }
-    return solveHelp(0,0);
+    ArrayList<int> queens = new ArrayList<>();
+    return solveHelp(0,0,queens);
 
   }
 
-  private boolean solveHelp(int r, int c){
+  private boolean solveHelp(int r, int c, ArrayList<int> queens){
     if (c >= board.length){
       return true;
     }
-    if (r >= board.length){
+    if (c == 0 && r >= board.length){
       return false;
     }
-    if (board[r][c] == 0){
-      addQueen(r,c);
+    System.out.println(debugString());
+    System.out.print("("+r+", "+c+")");
+    System.out.println();
+    if (addQueen(r,c)){
+      queens.add(r);
+      System.out.println("EmptySpot");
       for (int i = 0; i < board.length; i++){
-        return solveHelp(i,c+1);
+        System.out.println("GoingDown");
+        return solveHelp(i,c+1,queens);
       }
-      removeQueen(r,c);
-      return solveHelp(r+1,c);
     } else {
-      return solveHelp(r+1,c);
+      System.out.println("GoingDown");
+      return solveHelp(r,c+1,queens);
     }
     /*System.out.println(debugString());
     System.out.print("("+r+", "+c+")");
