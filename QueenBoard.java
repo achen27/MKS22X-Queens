@@ -124,69 +124,23 @@ public class QueenBoard{
     if (c == 0 && r >= board.length){
       return false;
     }
-    //System.out.println(debugString());
-    //System.out.print("("+r+", "+c+")");
-    //System.out.println();
     if (addQueen(r,c)){
       queens.add(r);
-      //System.out.println("EmptySpot");
       for (int i = 0; i < board.length; i++){
-        //System.out.println("GoingDown1");
         return solveHelp(i,c+1,queens);
       }
       int last = queens.get(queens.size()-1);
       removeQueen(last,c-1);
       queens.remove(queens.size()-1);
-      //System.out.println("GoingBack1");
       return solveHelp(last+1,c,queens);
     } else if (r >= board.length){
       int last = queens.get(queens.size()-1);
       removeQueen(last,c-1);
       queens.remove(queens.size()-1);
-      //System.out.println("GoingBack2");
       return solveHelp(last+1,c-1,queens);
     } else {
-      //System.out.println("GoingDown2");
       return solveHelp(r+1,c,queens);
     }
-    /*System.out.println(debugString());
-    System.out.print("("+r+", "+c+")");
-    System.out.println();
-    if (board[r][c] == 0){
-      addQueen(r,c);
-      System.out.println("EmptySpot");
-      for (int i = r; i < board.length; i++){
-        return solveHelp(i,c+1);
-      }
-    } else if (r >= board.length){
-      System.out.println("GoingBack");
-      removeQueen(r,c);
-      return solveHelp(r+1 , c-1);
-    } else {
-      System.out.println("GoingDown");
-      return solveHelp(0,c+1);
-    }*/
-    /*for (int i = r; i < board.length; i++){
-      if (board[i][c] == 0){
-        addQueen(i,c);
-        System.out.println("EmptySpot");
-        return solveHelp(0,c+1);
-      }
-      return solveHelp(i, c);
-    }*/
-    /*for (int i = 0; r+i < board.length; i++){
-      if (board[r+i][c] == 0) {
-        addQueen(r,c);
-        System.out.println("EmptySpot");
-        return solveHelp(0,c+1, r, c);
-      }
-      System.out.println("NotEmptySpot");
-      return solveHelp(r+1, c, queenR, queenC);
-    }
-    removeQueen(queenR, queenC);
-    System.out.println("Queen: ("+queenR+", "+queenC+")");
-    System.out.println("GoBack");
-    return solveHelp(queenR+1,c-1, queenR, queenC);*/
   }
 
   /**
