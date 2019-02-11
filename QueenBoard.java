@@ -156,7 +156,7 @@ public class QueenBoard{
       System.out.println("("+r+", "+c+")");
       System.out.println("Count: "+count);
       if (addQueen(r,c)){ //puts a queen down
-        count = countHelp(c+1,count);
+        count = countHelp(c+1,count); //changing count to new count
         removeQueen(r,c); //removes queen after placing it
       }
     }
