@@ -15,7 +15,7 @@ public class QueenBoard{
   }
 
   private boolean addQueen(int r, int c){
-    if (board[r][c] != 0){
+    if (r >= board.length || c >= board.length || board[r][c] != 0){
       return false;
     } else {
       //horizontal Xs
@@ -36,7 +36,7 @@ public class QueenBoard{
   }
 
   private boolean removeQueen(int r, int c){
-    if (board[r][c] != -1){
+    if (r >= board.length || c >= board.length || board[r][c] != -1){
       return false;
     } else {
       //horizontal Xs
@@ -112,12 +112,12 @@ public class QueenBoard{
         }
       }
     }
-    ArrayList<int> queens = new ArrayList<>();
+    ArrayList<Integer> queens = new ArrayList<>();
     return solveHelp(0,0,queens);
 
   }
 
-  private boolean solveHelp(int r, int c, ArrayList<int> queens){
+  private boolean solveHelp(int r, int c, ArrayList<Integer> queens){
     if (c >= board.length){
       return true;
     }
@@ -131,12 +131,23 @@ public class QueenBoard{
       queens.add(r);
       System.out.println("EmptySpot");
       for (int i = 0; i < board.length; i++){
-        System.out.println("GoingDown");
+        System.out.println("GoingDown1");
         return solveHelp(i,c+1,queens);
       }
+      int last = queens.get(queens.size()-1);
+      removeQueen(last,c-1);
+      queens.remove(queens.size()-1);
+      System.out.println("GoingBack1");
+      return solveHelp(last+1,c,queens);
+    } else if (r >= board.length){
+      int last = queens.get(queens.size()-1);
+      removeQueen(last,c-1);
+      queens.remove(queens.size()-1);
+      System.out.println("GoingBack2");
+      return solveHelp(last+1,c-1,queens);
     } else {
-      System.out.println("GoingDown");
-      return solveHelp(r,c+1,queens);
+      System.out.println("GoingDown2");
+      return solveHelp(r+1,c,queens);
     }
     /*System.out.println(debugString());
     System.out.print("("+r+", "+c+")");
