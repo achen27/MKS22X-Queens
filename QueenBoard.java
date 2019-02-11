@@ -112,13 +112,13 @@ public class QueenBoard{
         }
       }
     }
-    ArrayList<Integer> queens = new ArrayList<>();
-    return solveHelp(0,0,queens);
+    return solveHelp(0);
 
   }
 
-  private boolean solveHelp(int r, int c, ArrayList<Integer> queens){
-    if (c >= board.length){ //queen was placed in the last column
+  private boolean solveHelp(int c){
+
+    /*if (c >= board.length){ //queen was placed in the last column
       return true;
     }
     if (c == 0 && r >= board.length){ //queen was not able to be placed and board backtracked all the way
@@ -140,7 +140,7 @@ public class QueenBoard{
       return solveHelp(last+1,c-1,queens);
     } else { // moves down
       return solveHelp(r+1,c,queens);
-    }
+    }*/
   }
 
   /**
@@ -152,7 +152,7 @@ public class QueenBoard{
     return countHelp(0,0,0,queens);
   }
 
-  private int countHelp(int r, int c, int count, ArrayList<Integer> queens){
+  private int countHelp(int r, int c, int count, ArrayList<Integer> queens, int oldCount){
     if (c >= board.length){
       count++;
       int last = queens.get(queens.size()-1);
