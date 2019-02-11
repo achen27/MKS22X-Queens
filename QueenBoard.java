@@ -189,6 +189,18 @@ public class QueenBoard{
     return solveHelp(queenR+1,c-1, queenR, queenC);*/
   }
 
+  /**
+  *@return the number of solutions found, and leaves the board filled with only 0's
+  *@throws IllegalStateException when the board starts with any non-zero value
+  */
+  public int countSolutions(){
+    return countHelp(0,0,0);
+  }
+
+  private int countHelp(int r, int c, int count){
+    return 0;
+  }
+
   public static void main(String[] args){
 
     QueenBoard b = new QueenBoard(4);
