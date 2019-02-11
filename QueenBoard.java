@@ -152,13 +152,11 @@ public class QueenBoard{
     }
     for (int r = 0; r < board.length; r++){ //looping through each row
       if (addQueen(r,c)){ //puts a queen down
-        if (solveHelp(c+1)){ //goes to next col
-          return true;
-        }
+        countHelp(c+1,count); //goes to next col
         removeQueen(r,c); //removes queen after placing it
       }
     }
-    return false; //reached bottom of column
+    return count; //reached bottom of column
   }
 
   public static void main(String[] args){
