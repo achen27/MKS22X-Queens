@@ -15,7 +15,7 @@ public class QueenBoard{
   }
 
   private boolean addQueen(int r, int c){
-    if (r >= board.length || c >= board.length || board[r][c] != 0){
+    if (board[r][c] != 0){
       return false;
     } else {
       //horizontal Xs
@@ -36,7 +36,7 @@ public class QueenBoard{
   }
 
   private boolean removeQueen(int r, int c){
-    if (r >= board.length || c >= board.length || board[r][c] != -1){
+    if (board[r][c] != -1){
       return false;
     } else {
       //horizontal Xs
@@ -151,8 +151,11 @@ public class QueenBoard{
       count++; //queen placed in every col--solution found
     }
     for (int r = 0; r < board.length; r++){ //looping through each row
+      System.out.println(debugString());
+      System.out.println("("+r+", "+c+")");
+      System.out.println("Count: "+count);
       if (addQueen(r,c)){ //puts a queen down
-        countHelp(c+1,count); //goes to next col
+        count += countHelp(c+1,count);
         removeQueen(r,c); //removes queen after placing it
       }
     }
