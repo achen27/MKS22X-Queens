@@ -131,9 +131,13 @@ public class QueenBoard{
       for (int i = r; i < board.length; i++){
         return solveHelp(0,c+1);
       }
-    } else {
+    } else if (r >= board.length){
+      System.out.println("GoingBack");
       removeQueen(r,c);
       return solveHelp(r+1, c);
+    } else {
+      System.out.println("GoingDown");
+      return solveHelp(0,c+1);
     }
     /*for (int i = r; i < board.length; i++){
       if (board[i][c] == 0){
