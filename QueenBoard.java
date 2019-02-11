@@ -134,7 +134,7 @@ public class QueenBoard{
     } else if (r >= board.length){
       System.out.println("GoingBack");
       removeQueen(r,c);
-      return solveHelp(r+1, c-1);
+      return solveHelp(r+1 , c-1);
     } else {
       System.out.println("GoingDown");
       return solveHelp(0,c+1);
