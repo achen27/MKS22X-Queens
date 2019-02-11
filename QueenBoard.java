@@ -117,7 +117,9 @@ public class QueenBoard{
   }
 
   private boolean solveHelp(int c){
-
+    if (c >= board.length){
+      return true;
+    }
     /*if (c >= board.length){ //queen was placed in the last column
       return true;
     }
