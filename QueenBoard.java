@@ -154,39 +154,29 @@ public class QueenBoard{
 
   private int countHelp(int r, int c, int count, ArrayList<Integer> queens){
     if (c >= board.length){
-      //System.out.println("count + 1");
       count++;
       int last = queens.get(queens.size()-1);
       removeQueen(last,c-1);
       queens.remove(queens.size()-1);
-      //System.out.println("GoingBack2");
       return countHelp(last+1,c-1,count,queens);
     }
     if (c == 0 && r >= board.length){
       return count;
     }
-    //System.out.println(debugString());
-    //System.out.println("("+r+", "+c+")");
     if (addQueen(r,c)){
-      queens.add(r);
-      //System.out.println("EmptySpot");
       for (int i = 0; i < board.length; i++){
-        //System.out.println("GoingDown1");
         return countHelp(i,c+1,count,queens);
       }
       int last = queens.get(queens.size()-1);
       removeQueen(last,c-1);
       queens.remove(queens.size()-1);
-      //System.out.println("GoingBack1");
       return countHelp(last+1,c,count,queens);
     } else if (r >= board.length){
       int last = queens.get(queens.size()-1);
       removeQueen(last,c-1);
       queens.remove(queens.size()-1);
-      //System.out.println("GoingBack2");
       return countHelp(last+1,c-1,count,queens);
     } else {
-      //System.out.println("GoingDown2");
       return countHelp(r+1,c,count,queens);
     }
   }
