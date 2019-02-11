@@ -117,18 +117,18 @@ public class QueenBoard{
   }
 
   private boolean solveHelp(int c){
-    if (c >= board.length){
-      return true;
+    if (c >= board.length){ //col is past end of board
+      return true; //queen placed in every col
     }
-    for (int r = 0; r < board.length; r++){
-      if (addQueen(r,c)){
-        if (solveHelp(c+1)){
+    for (int r = 0; r < board.length; r++){ //looping through each row
+      if (addQueen(r,c)){ //puts a queen down
+        if (solveHelp(c+1)){ //goes to next col
           return true;
         }
-        removeQueen(r,c);
+        removeQueen(r,c); //removes queen after placing it
       }
     }
-    return false;
+    return false; //reached bottom of column
     /*if (c >= board.length){ //queen was placed in the last column
       return true;
     }
@@ -163,7 +163,7 @@ public class QueenBoard{
     return countHelp(0,0,0,queens);
   }
 
-  private int countHelp(int r, int c, int count, ArrayList<Integer> queens, int oldCount){
+  private int countHelp(int r, int c, int count, ArrayList<Integer> queens){
     if (c >= board.length){
       count++;
       int last = queens.get(queens.size()-1);
