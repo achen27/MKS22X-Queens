@@ -146,8 +146,19 @@ public class QueenBoard{
     return countHelp(0);
   }
 
-  private int countHelp(int c){
-    
+  private int countHelp(int c, int count){
+    if (c >= board.length){ //col is past end of board
+      return count; //queen placed in every col
+    }
+    for (int r = 0; r < board.length; r++){ //looping through each row
+      if (addQueen(r,c)){ //puts a queen down
+        if (solveHelp(c+1)){ //goes to next col
+          return true;
+        }
+        removeQueen(r,c); //removes queen after placing it
+      }
+    }
+    return false; //reached bottom of column
   }
 
   public static void main(String[] args){
