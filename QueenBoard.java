@@ -129,29 +129,6 @@ public class QueenBoard{
       }
     }
     return false; //reached bottom of column
-    /*if (c >= board.length){ //queen was placed in the last column
-      return true;
-    }
-    if (c == 0 && r >= board.length){ //queen was not able to be placed and board backtracked all the way
-      return false;
-    }
-    if (addQueen(r,c)){ //queen is placed down
-      queens.add(r);
-      for (int i = 0; i < board.length; i++){ //loops through next row
-        return solveHelp(i,c+1,queens);
-      }
-      int last = queens.get(queens.size()-1); //removes queen and goes down a row
-      removeQueen(last,c-1);
-      queens.remove(queens.size()-1);
-      return solveHelp(last+1,c,queens);
-    } else if (r >= board.length){ //removes queen and goes back a column and down a row
-      int last = queens.get(queens.size()-1);
-      removeQueen(last,c-1);
-      queens.remove(queens.size()-1);
-      return solveHelp(last+1,c-1,queens);
-    } else { // moves down
-      return solveHelp(r+1,c,queens);
-    }*/
   }
 
   /**
