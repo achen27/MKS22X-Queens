@@ -111,11 +111,11 @@ public class QueenBoard{
         }
       }
     }
-
     return solveHelp(0,0);
+
   }
 
-  private boolean solveHelp(int r, int c){
+  private void solveHelp(int r, int c){
     if (c >= board.length){
       return true;
     }
@@ -125,14 +125,24 @@ public class QueenBoard{
     System.out.println(debugString());
     System.out.print("("+r+", "+c+")");
     System.out.println();
-    for (int i = r; i < board.length; i++){
+    if (board[r][c] == 0){
+      addQueen(i,c);
+      System.out.println("EmptySpot");
+      for (int i = r; i < board.length; i++){
+        return solveHelp(0,c+1);
+      }
+    } else {
+      removeQueen(r,c);
+      return solveHelp(r+1, c);
+    }
+    /*for (int i = r; i < board.length; i++){
       if (board[i][c] == 0){
         addQueen(i,c);
         System.out.println("EmptySpot");
         return solveHelp(0,c+1);
       }
       return solveHelp(i, c);
-    }
+    }*/
     /*for (int i = 0; r+i < board.length; i++){
       if (board[r+i][c] == 0) {
         addQueen(r,c);
