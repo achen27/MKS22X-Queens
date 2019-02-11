@@ -112,10 +112,10 @@ public class QueenBoard{
       }
     }
 
-    return solveHelp(0,0,0,0);
+    return solveHelp(0,0);
   }
 
-  private boolean solveHelp(int r, int c, int queenR, int queenC){
+  private boolean solveHelp(int r, int c){
     if (c >= board.length){
       return true;
     }
@@ -125,20 +125,27 @@ public class QueenBoard{
     System.out.println(debugString());
     System.out.print("("+r+", "+c+")");
     System.out.println();
-    for (int i = 0; r+i < board.length; i++){
+    for (int i = r; i < board.length; i++){
+      if (board[i][c] == 0){
+        addQueen(i,c);
+        System.out.println("EmptySpot");
+        return solveHelp(0,c+1);
+      }
+      return solveHelp(i, c);
+    }
+    /*for (int i = 0; r+i < board.length; i++){
       if (board[r+i][c] == 0) {
         addQueen(r,c);
-        queenR = r;
-        queenC = c;
         System.out.println("EmptySpot");
-        return solveHelp(0,c+1, queenR, queenC);
+        return solveHelp(0,c+1, r, c);
       }
       System.out.println("NotEmptySpot");
       return solveHelp(r+1, c, queenR, queenC);
     }
     removeQueen(queenR, queenC);
+    System.out.println("Queen: ("+queenR+", "+queenC+")");
     System.out.println("GoBack");
-    return solveHelp(r+1,c-1, queenR, queenC);
+    return solveHelp(queenR+1,c-1, queenR, queenC);*/
   }
 
   public static void main(String[] args){
