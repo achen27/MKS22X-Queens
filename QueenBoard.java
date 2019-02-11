@@ -143,12 +143,12 @@ public class QueenBoard{
         }
       }
     }
-    return countHelp(0);
+    return countHelp(0,0);
   }
 
   private int countHelp(int c, int count){
     if (c >= board.length){ //col is past end of board
-      return count; //queen placed in every col
+      count++; //queen placed in every col--solution found
     }
     for (int r = 0; r < board.length; r++){ //looping through each row
       if (addQueen(r,c)){ //puts a queen down
